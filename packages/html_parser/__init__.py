@@ -111,7 +111,7 @@ class GeekbenchCrawler(BeautifulSoup):
         )
 
         values = map(
-            lambda x: (normalize_str(x.contents[0]), x.find("span", class_="description").string),
+            lambda x: (int(normalize_str(x.contents[0])), x.find("span", class_="description").string),
             benchmark_table_raw.find_all("td", class_ = "score")
         )
 
