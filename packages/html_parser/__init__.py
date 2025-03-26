@@ -115,7 +115,7 @@ class GeekbenchCrawler(BeautifulSoup):
             benchmark_table_raw.find_all("td", class_ = "score")
         )
 
-        return list(zip(names, values))
+        return [(l[0], l[1][0], l[1][1]) for l in zip(names, values)]
 
     def parse(self) -> dict:
         """
@@ -154,8 +154,8 @@ class GeekbenchCrawler(BeautifulSoup):
             parsed_dct.update(
                 {
                     c[0][0]: {
-                        "single-core": {"score": c[0][1][0], "description": c[0][1][1]},
-                        "multi-core": {"score": c[1][1][0], "description": c[1][1][1]},
+                        "single-core": {"score": c[0][1], "description": c[0][2]},
+                        "multi-core": {"score": c[1][1], "description": c[1][2]},
                     }
                 }
             )
