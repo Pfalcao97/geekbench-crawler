@@ -51,7 +51,16 @@ class GeekbenchCrawler(BeautifulSoup):
         return _score
     
     @staticmethod
-    def _table_to_dict(table_element):
+    def _table_to_dict(table_element:element.Tag) -> dict:
+        """
+        Turns a simple table element into a dictionary.
+
+        Args:
+        - table_element (element.Tag): table element with class name `table system-table`.
+
+        Returns:
+        - a dictonary with the scrapped data.
+        """
         _table_dct = dict()
 
         for row in table_element.find_all("tr"):
@@ -76,7 +85,25 @@ class GeekbenchCrawler(BeautifulSoup):
         return _table_dct
     
     @staticmethod
-    def _benchmark_extraction(benchmark_table_raw):
+    def _benchmark_extraction(benchmark_table_raw:element.Tag) -> list:
+        """
+        Takes benchmark data and transforms it into a list of tuples, in which:
+
+        [
+        ...
+        (test name, test score, test description)
+        ...
+        ]
+
+        This method works for a single table, to join both tables (single and multi core),
+        you'll need to zip them together before using.
+
+        Args:
+        - benchmarck_table_raw (element.Tag): table element with class name `table benchmark-table`.
+
+        Returns:
+        - list of tuples with the tests results.
+        """
 
         names = map(
             lambda x: normalize_str(x.contents[0]),
@@ -91,6 +118,12 @@ class GeekbenchCrawler(BeautifulSoup):
         return list(zip(names, values))
 
     def parse(self) -> dict:
+        """
+        Parse HTML data into a comprehensive dictionary.
+
+        Returns:
+        - A dictionary with the parsed data.
+        """
 
         parsed_dct = dict()
 
@@ -126,7 +159,6 @@ class GeekbenchCrawler(BeautifulSoup):
                     }
                 }
             )
-
 
         return parsed_dct
 
