@@ -153,7 +153,7 @@ class GeekbenchCrawler(BeautifulSoup):
 
             parsed_dct.update(
                 {
-                    c[0][0]: {
+                    c[0][0].lower(): {
                         "single-core": {"score": c[0][1], "description": c[0][2]},
                         "multi-core": {"score": c[1][1], "description": c[1][2]},
                     }
