@@ -10,4 +10,4 @@ dependencies = [
 ]
 
 [tool.uv.workspace]
-members = ["packages/html_parser"]
+members = ["packages/html_parser", "packages/output_formatter"]
