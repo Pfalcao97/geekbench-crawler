@@ -11,7 +11,7 @@ GeekbenchCrawlerCLI = ArgumentParser(
 
 GeekbenchCrawlerCLI.add_argument("geekbench_id")
 GeekbenchCrawlerCLI.add_argument("-l", "--level", default = "simple")
-GeekbenchCrawlerCLI.add_argument("-v", "--verbose", default = False)
+GeekbenchCrawlerCLI.add_argument("-v", "--verbose", action='store_const', const=True)
 
 def main():
 
