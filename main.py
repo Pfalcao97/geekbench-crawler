@@ -15,8 +15,6 @@ GeekbenchCrawlerCLI.add_argument("-v", "--verbose", action='store_const', const=
 
 def main():
 
-    # 11195682, 11206607, 11217153, 11236233
-
     args = GeekbenchCrawlerCLI.parse_args()
     _verbose = args.verbose
 
