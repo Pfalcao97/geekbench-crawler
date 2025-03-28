@@ -96,6 +96,8 @@ def dict_to_csv(raw_dict:dict, level:str, **kwargs) -> str:
     with open(csv_name, "w") as pen:
         pen.write(csv_str)
 
+    return csv_name
+
 
 
 if __name__ == "__main__":
